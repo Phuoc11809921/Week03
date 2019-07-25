@@ -1,0 +1,52 @@
+# mode có thể là 'r' để đọc file, hay 'w' và 'a' để tạo file và ghi nội dung cho file
+# Doc File
+
+# ket noi voi file
+filepath = 'hello_world.txt'
+filehandle = open(filepath, 'r')
+
+data = filehandle.read()
+print(type(data))
+print('-----------------')
+print(data)
+
+# Dong ket noi file
+filehandle.close()
+
+# Ghi file
+
+# ket noi voi file
+file_path = 'my_file.txt'
+file_handle = open(file_path, 'w')
+
+text1 = 'writing line 1 \n'
+file_handle.write(text1)
+text2 = 'writing line 2 \n'
+file_handle.write(text2)
+
+# Dong ket noi file
+file_handle.close()
+
+# Trong trường hợp file my_file.txt đã tồn tại rồi thì chương trình tạo mới (tạo đè) file my_file.txt mà không quan tâm đến nội dung của file cũ
+
+# ket noi voi file
+file_path = 'my_file.txt'
+file_handle = open(file_path, 'w')
+
+text3 = 'writing line 3 \n'
+file_handle.write(text3)
+
+# Dong ket noi file
+file_handle.close()
+
+# Trong trường hợp chúng ta muốn ghi tiếp tục nội dung vào một file đã tồn tại, thì chúng ta chỉ cần thay đổi tham số thứ 2 của hàm open thành 'a' (viết tắt cho từ append)
+
+# ket noi voi file
+file_path = 'my_file.txt'
+file_handle = open(file_path, 'a')
+
+text4 = 'writing line 4 \n'
+file_handle.write(text4)
+
+# Dong ket noi file
+file_handle.close()
