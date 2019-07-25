@@ -1,0 +1,120 @@
+# Hàm os.path.exists
+# Hàm os.path.exists(path) được dùng để kiểm tra một file có tồn tại hay không
+
+import os
+
+file_path1 = 'my_file.txt'
+check1 = os.path.exists(file_path1)
+print('my_file.txt co ton tai khong ?', check1)
+
+file_path2 = 'non_existence_file.txt'
+check2 = os.path.exists(file_path2)
+print('non_existence_file.txt co ton tai khong ?', check2)
+
+# Hàm split
+# Vi moi thuoc tinh cach nhau bang dau ','
+# nen ham split chuyen ve mot mang voi moi index tuong ung nhu thu tu xuat hien
+
+line = '001, john, 12-06-1999'
+infor = line.split(',')
+
+# ten hoc sinh o cot thu 2 tuong ung trong python index la 1
+print(infor[1])
+
+# Hàm join
+# Hàm join giúp cho việc ghi dữ liệu có format (ví dụ mỗi thuộc tính được ngăn cách nhau một kí hiệu được quy định trước). Thông thường, dữ liệu sau khi thu thập để ghi vào file là phải một kiểu chuỗi. Vì vậy khi chuyển các thuộc tính và viết ngăn cách nhau một kí hiệu bất kỳ, thì cần phải chuyển tất cả về kiểu dữ liệu chuỗi.
+infor = ['001','john','12-06-1999']
+st = (',').join(infor)
+print(st)
+
+print('--------------------------------------')
+# THUC HANH
+
+# ket noi voi file
+file = open('Iris.csv','r')
+
+# readlines giup viec doc file theo tung dong, moi dong la 1 chuoi
+lines = file.readlines()
+
+# in 10 dong dau tien
+for i in range(10):
+    print(lines[i])
+
+# Dong ket noi file
+file.close()
+print('--------------------------------------')
+# dùng thêm hàm split() để phân tách các cột giá trị
+
+# ket noi voi file
+file = open('Iris.csv','r')
+
+# readlines giup viec doc file theo tung dong, moi dong la 1 chuoi
+lines = file.readlines()
+
+# in ra 10 dong dau tien
+for i in range(10):
+    string = lines[i].split(',')
+    print('%s; %s; %s; %s; %s; %s' % (string[0],string[1],string[2],string[3],string[4],string[5]))
+
+# dong ket noi file
+file.close()
+print('--------------------------------------')
+# 1) Bỏ cột Id
+# 2) Chuyển đổi 4 đặc trưng sang kiểu float
+# 3) Chuyển kiểu dữ liệu của một species từ string sang integer
+
+# ket noi voi file
+file = open('Iris.csv','r')
+lines = file.readlines()
+for i in range(1, 10):
+    string = lines[i].split(',')
+
+    sepal_length = float(string[1].strip())
+    sepal_width  = float(string[2].strip())
+    pedal_length = float(string[3].strip())
+    pedal_width  = float(string[4].strip())
+
+    species = 0
+    if string[5].strip() == 'Iris-versicolor':
+        species = 1
+    elif string[5].strip() == 'Iris-virginica':
+        species = 2
+
+    print('%s; %s; %s; %s; %s ' % (sepal_length, sepal_width, pedal_length, pedal_width, species))
+
+# Dong ket noi voi file
+file.close()
+print('--------------------------------------')
+# lưu mỗi mẫu dữ liệu thành một list, và lưu list này vào trong list data (list data chứa cả dataset).
+
+file = open('Iris.csv','r')
+lines = file.readlines()
+
+data = []
+
+# bo dong header
+for i in range(1, len(lines)):
+    string = lines[i].split(',')
+
+    sepal_length = float(string[1].strip())
+    sepal_width = float(string[2].strip())
+    pedal_length = float(string[3].strip())
+    pedal_width = float(string[4].strip())
+
+    species = 0
+    if string[5].strip() == 'Iris-versicolor':
+        species = 1
+    elif string[5].strip() == 'Iris-virginica':
+        species = 2
+
+    data.append([sepal_length, sepal_width, pedal_length, pedal_width, species])
+
+# Dong ket noi file
+file.close()
+
+print(data[0])
+print(data[50])
+print(data[100])
+
+print('--------------------------------------')
+
